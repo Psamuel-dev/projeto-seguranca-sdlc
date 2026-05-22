@@ -1,0 +1,32 @@
+# .github/dependabot.yml
+# ============================================================
+# Configuração do Dependabot para monitoramento automático
+# de dependências vulneráveis e desatualizadas.
+# ============================================================
+
+version: 2
+
+updates:
+  # Monitora dependências npm (Node.js)
+  - package-ecosystem: "npm"
+    directory: "/"           # Raiz do repositório
+    schedule:
+      interval: "weekly"     # Verifica toda semana
+      day: "monday"
+      time: "08:00"
+    open-pull-requests-limit: 10
+
+    # Agrupa atualizações de dependências de desenvolvimento
+    groups:
+      dependencias-dev:
+        patterns:
+          - "*"
+        update-types:
+          - "minor"
+          - "patch"
+
+  # Monitora Actions do GitHub usadas nos workflows
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"

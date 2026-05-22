@@ -1,0 +1,52 @@
+# .github/workflows/codeql.yml
+# ============================================================
+# Workflow do GitHub Actions para análise de segurança com CodeQL
+# Acionado em todo push/PR na branch main e semanalmente.
+# ============================================================
+
+name: "CodeQL — Análise de Segurança"
+
+on:
+  push:
+    branches: ["main"]
+  pull_request:
+    branches: ["main"]
+  schedule:
+    # Executa toda segunda-feira às 08:00 UTC
+    - cron: "0 8 * * 1"
+
+jobs:
+  analyze:
+    name: Analisar (${{ matrix.language }})
+    runs-on: ubuntu-latest
+
+    permissions:
+      # Permissões necessárias para o Code Scanning
+      actions: read
+      contents: read
+      security-events: write
+
+    strategy:
+      fail-fast: false
+      matrix:
+        language: ["javascript"]
+        # Para outros projetos, adicionar: "python", "java", "go", etc.
+
+    steps:
+      - name: Checkout do repositório
+        uses: actions/checkout@v4
+
+      - name: Inicializar CodeQL
+        uses: github/codeql-action/init@v3
+        with:
+          languages: ${{ matrix.language }}
+          # Habilita as queries de segurança padrão + extras de qualidade
+          queries: security-extended
+
+      - name: Autobuild (detecta automaticamente como compilar o projeto)
+        uses: github/codeql-action/autobuild@v3
+
+      - name: Executar análise CodeQL
+        uses: github/codeql-action/analyze@v3
+        with:
+          category: "/language:${{ matrix.language }}"

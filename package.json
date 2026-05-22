@@ -1,0 +1,19 @@
+{
+  "name": "projeto-seguranca-sdlc",
+  "version": "1.0.0",
+  "description": "Projeto de exemplo para prova de conceito - Segurança de Software (Tema 11)",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node src/index.js",
+    "test": "echo \"No tests configured\" && exit 0"
+  },
+  "dependencies": {
+    "axios": "0.21.1",
+    "express": "4.17.1",
+    "lodash": "4.17.15",
+    "minimist": "1.2.5",
+    "node-fetch": "2.6.1"
+  },
+  "author": "Grupo - Segurança de Software",
+  "license": "MIT"
+}
