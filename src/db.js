@@ -1,4 +1,4 @@
-// src/db.js
+src/db.js
 // ============================================================
 // ATENÇÃO: Este arquivo contém código INTENCIONALMENTE inseguro
 // para fins didáticos — disciplina de Segurança de Software.
@@ -32,26 +32,26 @@ db.serialize(() => {
 //   nome = "' OR '1'='1" => retorna todos os usuários
 //   nome = "'; DROP TABLE usuarios; --" => apaga a tabela
 // -------------------------------------------------------
-function buscarUsuario(nome) {
-  const query = "SELECT * FROM usuarios WHERE nome = '" + nome + "'";
-  // CodeQL irá detectar: "Database query built from user-controlled sources"
-  return new Promise((resolve, reject) => {
-    db.all(query, (err, rows) => {
-      if (err) reject(err);
-      else resolve(rows);
-    });
-  });
-}
+//function buscarUsuario(nome) {
+//  const query = "SELECT * FROM usuarios WHERE nome = '" + nome + "'";
+//  // CodeQL irá detectar: "Database query built from user-controlled sources"
+//  return new Promise((resolve, reject) => {
+//    db.all(query, (err, rows) => {
+//      if (err) reject(err);
+//      else resolve(rows);
+//    });
+//  });
+//}
 
 // VERSÃO CORRIGIDA (comentada — para comparação didática):
-// function buscarUsuarioSeguro(nome) {
-//   const query = "SELECT * FROM usuarios WHERE nome = ?";
-//   return new Promise((resolve, reject) => {
-//     db.all(query, [nome], (err, rows) => {
-//       if (err) reject(err);
-//       else resolve(rows);
-//     });
-//   });
-// }
+ function buscarUsuarioSeguro(nome) {
+   const query = "SELECT * FROM usuarios WHERE nome = ?";
+   return new Promise((resolve, reject) => {
+     db.all(query, [nome], (err, rows) => {
+       if (err) reject(err);
+       else resolve(rows);
+     });
+   });
+ }
 
 module.exports = { buscarUsuario };

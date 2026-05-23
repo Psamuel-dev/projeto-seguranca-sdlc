@@ -1,4 +1,4 @@
-// src/index.js
+src/index.js
 // ============================================================
 // Aplicação Express de exemplo — usa dependências com CVEs
 // conhecidas para acionar o Dependabot do GitHub Advanced
