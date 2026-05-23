@@ -1,4 +1,4 @@
-src/index.js
+//src/index.js
 // ============================================================
 // Aplicação Express de exemplo — usa dependências com CVEs
 // conhecidas para acionar o Dependabot do GitHub Advanced
@@ -102,7 +102,7 @@ if (args.debug) {
 // Inicia o servidor
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
-  console.log(`Servidor rodando em http://localhost:${PORT}`);
+  console.log(`Servidor rodando em http:localhost:${PORT}`);
   console.log("Rotas disponíveis:");
   console.log("  GET  /usuario?nome=<nome>  → busca usuário (SQL Injection)");
   console.log("  POST /template             → renderiza template (Command Injection)");

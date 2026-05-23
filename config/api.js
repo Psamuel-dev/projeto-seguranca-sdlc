@@ -1,4 +1,4 @@
-config/api.js
+//config/api.js
 // ============================================================
 // ATENÇÃO: Este arquivo contém uma credencial FICTÍCIA
 // exposta intencionalmente para fins didáticos.
@@ -12,21 +12,7 @@ const API_KEY = "ghp_A1B2C3D4E5F6G7H8I9J0K1L2M3N4O5P6Q7R8";
 
 const DB_PASSWORD = "minha_senha_super_secreta_123";
 
-//const config = {
-//  api: {
-//    key: API_KEY,
-//    baseUrl: "https://api.exemplo.com/v1",
-//    timeout: 5000,
-//  },
-//  database: {
-//    host: "localhost",
-//    port: 5432,
-//    name: "app_db",
-//    password: DB_PASSWORD, // NUNCA hardcodar senhas assim
-//  },
-//};
 
-// VERSÃO CORRIGIDA (comentada — para comparação didática):
  const config = {
    api: {
      key: process.env.API_KEY,       // lê da variável de ambiente

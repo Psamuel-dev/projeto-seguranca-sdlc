@@ -1,4 +1,4 @@
-src/db.js
+//src/db.js
 // ============================================================
 // ATENÇÃO: Este arquivo contém código INTENCIONALMENTE inseguro
 // para fins didáticos — disciplina de Segurança de Software.
@@ -23,27 +23,7 @@ db.serialize(() => {
     ('Bob',   'bob@email.com',   'senha456')`);
 });
 
-// -------------------------------------------------------
-// VULNERABILIDADE: SQL Injection
-// A entrada do usuário é concatenada diretamente na query
-// sem nenhuma sanitização ou uso de prepared statements.
-//
-// Exemplo de ataque:
-//   nome = "' OR '1'='1" => retorna todos os usuários
-//   nome = "'; DROP TABLE usuarios; --" => apaga a tabela
-// -------------------------------------------------------
-//function buscarUsuario(nome) {
-//  const query = "SELECT * FROM usuarios WHERE nome = '" + nome + "'";
-//  // CodeQL irá detectar: "Database query built from user-controlled sources"
-//  return new Promise((resolve, reject) => {
-//    db.all(query, (err, rows) => {
-//      if (err) reject(err);
-//      else resolve(rows);
-//    });
-//  });
-//}
 
-// VERSÃO CORRIGIDA (comentada — para comparação didática):
  function buscarUsuarioSeguro(nome) {
    const query = "SELECT * FROM usuarios WHERE nome = ?";
    return new Promise((resolve, reject) => {
